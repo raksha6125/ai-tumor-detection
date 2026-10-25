@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="upload-container">
+    <h2>Login</h2>
+
+    {% if message %}
+    <p style="color:red; font-weight:600;">{{ message }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <input type="text" name="username" placeholder="Username" required 
+               style="width:80%; padding:12px; margin:10px;">
+        <input type="password" name="password" placeholder="Password" required 
+               style="width:80%; padding:12px; margin:10px;">
+        <button class="upload-btn">Login</button>
+    </form>
+</div>
+
+{% endblock %}

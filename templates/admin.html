@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="admin-container">
+
+    <h2>Admin Dashboard</h2>
+
+    <div class="admin-stats-box">
+        <div class="admin-stat-card">Total Users: {{ stats.total_users }}</div>
+        <div class="admin-stat-card">Total Uploads: {{ stats.total_uploads }}</div>
+    </div>
+
+    <h3>All Logs</h3>
+
+    {% for log in logs %}
+    <div class="admin-log-card">
+        <p><b>ID:</b> {{ log[0] }} | <b>User:</b> {{ log[1] }} | <b>Stage:</b> {{ log[5] }}</p>
+
+        <a class="admin-delete-btn" href="{{ url_for('admin_delete_record', id=log[0]) }}">
+            Delete Record
+        </a>
+        <a class="admin-delete-btn" href="{{ url_for('admin_delete_user', username=log[1]) }}">
+            Delete User
+        </a>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="result-center">
+
+    <div class="result-card">
+        <h2>Prediction Results</h2>
+
+        <p><b>Stage:</b> {{ stage }}</p>
+        <p><b>Tumor Type:</b> {{ tumor_type }}</p>
+        <p><b>Model Accuracy:</b> {{ accuracy }}%</p>
+
+        {% if stage != "Normal" %}
+        <div class="stage-bar-container">
+            <div class="stage-bar"style="width: {{ stage_width }}; background: {{ stage_color }};">
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="result-images">
+
+            <!-- ORIGINAL IMAGE -->
+            <div>
+                <p><b>Original Image</b></p>
+                <img src="{{ url_for('static', filename='uploads/' + input_image) }}" alt="Original CT">
+
+                <a class="download-btn"
+                   href="{{ url_for('static', filename='uploads/' + input_image) }}"
+                   download>
+                    ⬇ Download Original
+                </a>
+            </div>
+
+            <!-- RED TUMOR MASK -->
+            <div>
+                <p><b>Red Tumor Mask</b></p>
+                <img src="{{ url_for('static', filename='uploads/' + output_mask) }}" alt="Tumor Mask">
+
+                <a class="download-btn"
+                   href="{{ url_for('static', filename='uploads/' + output_mask) }}"
+                   download>
+                    ⬇ Download Mask
+                </a>
+            </div>
+
+            <!-- TUMOR-ONLY IMAGE -->
+            <div>
+                <p><b>Tumor-Only Image</b></p>
+                <img src="{{ url_for('static', filename='uploads/' + tumor_only) }}" alt="Tumor Only">
+
+                <a class="download-btn"
+                   href="{{ url_for('static', filename='uploads/' + tumor_only) }}"
+                   download>
+                    ⬇ Download Tumor-Only
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="home-container">
+
+    <div class="hero-card">
+        <h1 class="hero-title">Pancreatic Tumor Detection</h1>
+        <p class="hero-sub">
+            Upload CT scans to get AI-based segmentation, tumor extraction, and stage prediction.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="{{ url_for('upload_image') }}" class="btn-primary-large">⬆ Analyze Scan</a>
+            <a href="{{ url_for('history') }}" class="btn-secondary-large">📁 View History</a>
+        </div>
+    </div>
+
+    <div class="how-it-works-card">
+        <h2>How It Works</h2>
+        <ul>
+            <li>Upload a CT image</li>
+            <li>Model segments tumor region</li>
+            <li>View red mask + tumor-only image</li>
+            <li>Get staging and tumor type</li>
+        </ul>
+    </div>
+
+</div>
+
+{% endblock %}

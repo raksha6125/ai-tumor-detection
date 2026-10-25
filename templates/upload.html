@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="upload-container">
+
+    <h2>Upload CT Scan</h2>
+
+    {% if message %}
+    <p style="color:red; font-weight:600;">{{ message }}</p>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <button class="upload-btn">Analyze</button>
+    </form>
+
+</div>
+
+{% endblock %}

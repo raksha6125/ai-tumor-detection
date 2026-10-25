@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+users.db
+uploads/
+.venv/
+venv/
+.env

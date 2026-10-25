@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="history-container">
+    <h2>Your Scan History</h2>
+
+    {% for r in records %}
+    <div class="history-card">
+        <div>
+            <b>Scan ID:</b> {{ r[0] }} <br>
+            <b>Stage:</b> {{ r[4] }} <br>
+            <b>Type:</b> {{ r[5] }}
+        </div>
+
+        <div>
+            <a class="delete-btn" href="{{ url_for('delete_record', id=r[0]) }}">
+                Delete
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% if not records %}
+    <p>No history found.</p>
+    {% endif %}
+
+    <a href="{{ url_for('delete_all_history') }}" class="delete-btn">Delete All History</a>
+
+</div>
+
+{% endblock %}

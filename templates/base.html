@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tumor Detection System</title>
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="nav-brand">
+            <div class="nav-brand-icon">🩺</div>
+            Tumor Detection
+        </div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            {% if session.get('user') %}
+            <a href="{{ url_for('upload_image') }}">Upload</a>
+            <a href="{{ url_for('history') }}">History</a>
+                {% if session.get('user') == 'admin' %}
+                <a href="{{ url_for('admin_dashboard') }}">Admin</a>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <div class="nav-auth-buttons">
+            {% if session.get('user') %}
+            <a href="{{ url_for('logout') }}" class="btn-register">Logout</a>
+            {% else %}
+            <a href="{{ url_for('login') }}" class="btn-login">Login</a>
+            <a href="{{ url_for('register') }}" class="btn-register">Register</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
